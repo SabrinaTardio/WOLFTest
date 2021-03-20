@@ -21,6 +21,7 @@
 		07F2581F1DB3B66A0077EACA /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F2581E1DB3B66A0077EACA /* PhotoCell.swift */; };
 		07F258211DB3BA8F0077EACA /* PhotoComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F258201DB3BA8F0077EACA /* PhotoComment.swift */; };
 		2CB9397E2604DBF300E5A850 /* AcceptanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB9397D2604DBF300E5A850 /* AcceptanceTest.swift */; };
+		2CCF7B682606894E00B5FD87 /* FlickerFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCF7B672606894E00B5FD87 /* FlickerFetcherTests.swift */; };
 		B5586B511DB153B800E82C9B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5586B501DB153B800E82C9B /* GradientView.swift */; };
 		B59C06221DB16D3500425848 /* CachedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C06211DB16D3500425848 /* CachedRequest.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		07F2581E1DB3B66A0077EACA /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		07F258201DB3BA8F0077EACA /* PhotoComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoComment.swift; sourceTree = "<group>"; };
 		2CB9397D2604DBF300E5A850 /* AcceptanceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceTest.swift; sourceTree = "<group>"; };
+		2CCF7B672606894E00B5FD87 /* FlickerFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickerFetcherTests.swift; sourceTree = "<group>"; };
 		B5586B501DB153B800E82C9B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B59C06211DB16D3500425848 /* CachedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +154,7 @@
 			children = (
 				075F3ADC1DB0FFE100831312 /* PalringoPhotosTests.m */,
 				075F3ADE1DB0FFE100831312 /* Info.plist */,
+				2CCF7B672606894E00B5FD87 /* FlickerFetcherTests.swift */,
 			);
 			path = PalringoPhotosTests;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 					};
 					075F3AD71DB0FFE100831312 = {
 						CreatedOnToolsVersion = 8.0;
+						LastSwiftMigration = 1210;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 075F3ABE1DB0FFE100831312;
 					};
@@ -319,6 +323,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CCF7B682606894E00B5FD87 /* FlickerFetcherTests.swift in Sources */,
 				075F3ADD1DB0FFE100831312 /* PalringoPhotosTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -500,10 +505,13 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PalringoPhotosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.palringo.PalringoPhotosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PalringoPhotos.app/PalringoPhotos";
 			};
 			name = Debug;
@@ -513,10 +521,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = PalringoPhotosTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.palringo.PalringoPhotosTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PalringoPhotos.app/PalringoPhotos";
 			};
 			name = Release;

@@ -8,13 +8,17 @@
 
 import Foundation
 
-class CachedRequest {
+protocol Request {
+    func request(url: URL, completion: @escaping (Data?, Bool)->() ) -> URLSessionTask?
+}
 
-    static let cache = URLCache(memoryCapacity: 40 * 1024 * 1024,
+class CachedRequest: Request {
+
+    let cache = URLCache(memoryCapacity: 40 * 1024 * 1024,
                                 diskCapacity: 512 * 1024 * 1024,
                                 diskPath: "urlCache")
 
-   static func request(url: URL, completion: @escaping (Data?, Bool)->() ) -> URLSessionTask? {
+    func request(url: URL, completion: @escaping (Data?, Bool)->() ) -> URLSessionTask? {
         let request = URLRequest(url: url,
                                  cachePolicy: .returnCacheDataElseLoad,
                                  timeoutInterval: 100)

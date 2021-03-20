@@ -71,7 +71,7 @@ class ImageDataSource: NSObject, UICollectionViewDataSource {
         }
         
         let currentPage = photos.count
-        FlickrFetcher().getPhotosUrls(forPage: currentPage+1) { [weak self] in
+        FlickrFetcher().getPhotosUrls(forAuthor: Photographers.dersascha, forPage: currentPage+1) { [weak self] in
             if $0.count > 0 {
                 self?.photos.append($0)
                 self?.collectionView?.insertSections(IndexSet(integer: currentPage))

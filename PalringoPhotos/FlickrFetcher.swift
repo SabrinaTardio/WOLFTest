@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Photographers: String {
+enum Photographers: String, CaseIterable {
     case dersascha
     case alfredoliverani
     case photographybytosh
@@ -70,12 +70,17 @@ fileprivate extension PhotoComment {
 }
 
 class FlickrFetcher {
+    let requester: Request
     
-    func getPhotosUrls(forPage page: Int = 1,
+    init(requester: Request = CachedRequest()) {
+        self.requester = requester
+    }
+    
+    func getPhotosUrls(forAuthor author: Photographers ,forPage page: Int = 1,
                        completion: @escaping ([Photo])->()) {
 
         let properties = [
-            "&user_id=\(Photographers.dersascha.rawValue)",
+            "&user_id=\(author.rawValue)",
             "&page=\(page)",
             "&per_page=20",
             "&extras=url_-,url_z"
@@ -137,7 +142,7 @@ class FlickrFetcher {
 
         guard let requestURL = URL(string: urlString) else {return}
         
-        _ = CachedRequest.request(url: requestURL) { data, isCached in
+        _ = requester.request(url: requestURL) { data, isCached in
             if let jsonDictionary = self.processJSON(data: data!) {
                 completion(jsonDictionary)
             }

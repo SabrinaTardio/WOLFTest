@@ -22,7 +22,7 @@ class PhotoCell: UICollectionViewCell {
             
             if let photo = photo {
                 
-                self.fetchTask = CachedRequest.request(url: photo.url) { data, isCached in
+                self.fetchTask = CachedRequest().request(url: photo.url) { data, isCached in
                     DispatchQueue.main.async {
                         guard data != nil else { return }
                         let img = UIImage(data: data!)
