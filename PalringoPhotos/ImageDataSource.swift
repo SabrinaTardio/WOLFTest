@@ -14,9 +14,13 @@ class ImageDataSource: NSObject, UICollectionViewDataSource {
 
     var photos: [[Photo]] = []
     var isFetchingPhotos = false
-
+    var author = Photographers.dersascha
+    let fetcher = FlickrFetcher()
+    
+    @IBOutlet weak var navigationItem: UINavigationItem!
     @IBOutlet var loadingView: UIView?
     @IBOutlet weak var collectionView: UICollectionView?
+
 
     override init() {
         super.init()
@@ -71,7 +75,7 @@ class ImageDataSource: NSObject, UICollectionViewDataSource {
         }
         
         let currentPage = photos.count
-        FlickrFetcher().getPhotosUrls(forAuthor: Photographers.dersascha, forPage: currentPage+1) { [weak self] in
+        fetcher.getPhotosUrls(forAuthor: author, forPage: currentPage+1) { [weak self] in
             if $0.count > 0 {
                 self?.photos.append($0)
                 self?.collectionView?.insertSections(IndexSet(integer: currentPage))
@@ -80,5 +84,30 @@ class ImageDataSource: NSObject, UICollectionViewDataSource {
         
             self?.loadingView?.removeFromSuperview()
         }
+    }
+    
+    
+    @IBAction func selectAuthorPressed(_ sender: UIBarButtonItem) {
+        createAuthorAlert()
+    }
+    
+    private func createAuthorAlert() {
+        let alert = UIAlertController(title: "Photographer", message: "Chose", preferredStyle: .actionSheet)
+        
+        for author in Photographers.allCases {
+            alert.addAction(UIAlertAction(title: author.displayName, style: .default, handler: { (_) in
+                self.author = author
+                self.navigationItem.title = author.displayName
+                self.resetCollectionView()
+            }))
+        }
+        let currentVC = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
+        currentVC?.present(alert, animated: true)
+    }
+    
+    private func resetCollectionView() {
+        self.photos = []
+        self.collectionView?.reloadData()
+        self.fetchNextPage()
     }
 }

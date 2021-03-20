@@ -13,7 +13,7 @@ class FlickerFetcherTests: XCTestCase {
 
 
 
-    func testOnGetPhotosUrlsAsksDataForCorrectPhotographer()  {
+    func testOnGetPhotosUrlsAsksDataForCorrectPhotographera()  {
         let photographer = Photographers.allCases.randomElement()
         let expectedStringInURL = photographer!.rawValue
         let capturingRequester = CapturingRequester()

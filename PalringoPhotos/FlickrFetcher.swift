@@ -139,7 +139,7 @@ class FlickrFetcher {
             apiString +
             formatString +
             paramitorString
-
+        print ("url \(urlString)")
         guard let requestURL = URL(string: urlString) else {return}
         
         _ = requester.request(url: requestURL) { data, isCached in

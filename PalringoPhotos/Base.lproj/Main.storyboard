@@ -94,13 +94,21 @@
                             <outlet property="delegate" destination="8nV-Sw-2bH" id="jrW-Ld-i0h"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="{Photographer Name}" prompt="Photos" id="ulq-JA-i00"/>
+                    <navigationItem key="navigationItem" title="{Photographer Name}" prompt="Photos" id="ulq-JA-i00">
+                        <barButtonItem key="rightBarButtonItem" title="Author" id="bGf-sh-gxC">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="selectAuthorPressed:" destination="7eb-Jl-vno" id="Svl-ZJ-aRv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rW0-iC-ygh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="7eb-Jl-vno" customClass="ImageDataSource" customModule="PalringoPhotos" customModuleProvider="target">
                     <connections>
                         <outlet property="collectionView" destination="J3M-ja-ULk" id="ZSt-eA-af4"/>
                         <outlet property="loadingView" destination="NJX-Qk-tfv" id="Lvd-pI-CCB"/>
+                        <outlet property="navigationItem" destination="ulq-JA-i00" id="6we-KQ-v8z"/>
                     </connections>
                 </customObject>
                 <view opaque="NO" contentMode="scaleToFill" id="NJX-Qk-tfv">
