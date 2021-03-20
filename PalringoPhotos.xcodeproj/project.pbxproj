@@ -22,6 +22,7 @@
 		07F258211DB3BA8F0077EACA /* PhotoComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F258201DB3BA8F0077EACA /* PhotoComment.swift */; };
 		2CB9397E2604DBF300E5A850 /* AcceptanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB9397D2604DBF300E5A850 /* AcceptanceTest.swift */; };
 		2CCF7B682606894E00B5FD87 /* FlickerFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCF7B672606894E00B5FD87 /* FlickerFetcherTests.swift */; };
+		2CCF7CEB2606C14600B5FD87 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCF7CEA2606C14600B5FD87 /* TestingAppDelegate.swift */; };
 		B5586B511DB153B800E82C9B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5586B501DB153B800E82C9B /* GradientView.swift */; };
 		B59C06221DB16D3500425848 /* CachedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C06211DB16D3500425848 /* CachedRequest.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		07F258201DB3BA8F0077EACA /* PhotoComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoComment.swift; sourceTree = "<group>"; };
 		2CB9397D2604DBF300E5A850 /* AcceptanceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceTest.swift; sourceTree = "<group>"; };
 		2CCF7B672606894E00B5FD87 /* FlickerFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickerFetcherTests.swift; sourceTree = "<group>"; };
+		2CCF7CEA2606C14600B5FD87 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		B5586B501DB153B800E82C9B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B59C06211DB16D3500425848 /* CachedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +157,7 @@
 				075F3ADC1DB0FFE100831312 /* PalringoPhotosTests.m */,
 				075F3ADE1DB0FFE100831312 /* Info.plist */,
 				2CCF7B672606894E00B5FD87 /* FlickerFetcherTests.swift */,
+				2CCF7CEA2606C14600B5FD87 /* TestingAppDelegate.swift */,
 			);
 			path = PalringoPhotosTests;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CCF7CEB2606C14600B5FD87 /* TestingAppDelegate.swift in Sources */,
 				2CCF7B682606894E00B5FD87 /* FlickerFetcherTests.swift in Sources */,
 				075F3ADD1DB0FFE100831312 /* PalringoPhotosTests.m in Sources */,
 			);

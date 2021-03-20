@@ -24,8 +24,6 @@ class FlickerFetcherTests: XCTestCase {
         
         XCTAssertTrue(actualURL.contains(expectedStringInURL))
     }
-    
-
 }
 
 
@@ -35,5 +33,14 @@ class CapturingRequester: Request {
     func request(url: URL, completion: @escaping (Data?, Bool) -> ()) -> URLSessionTask? {
         capturedURL = url.absoluteString
         return nil
+    }
+}
+
+
+extension UIViewController {
+    func displayOnScreen() {
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first!
+        window.rootViewController = self
+        XCTWaiter().wait(for: [XCTestExpectation()], timeout: 5)
     }
 }

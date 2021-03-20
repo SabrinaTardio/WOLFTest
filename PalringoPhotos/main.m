@@ -9,8 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
-int main(int argc, char * argv[]) {
+@import UIKit;
+#import "AppDelegate.h"
+
+int main(int argc, char *argv[])
+{
+    Class appDelegateClass;
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+        appDelegateClass = NSClassFromString(@"TestingAppDelegate");
+        if (!appDelegateClass) {
+            appDelegateClass = [AppDelegate class];
+        }
     }
+    return UIApplicationMain(argc, argv, nil,
+                             NSStringFromClass(appDelegateClass));
 }
