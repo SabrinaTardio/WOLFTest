@@ -43,6 +43,17 @@ class AcceptanceTest: XCTestCase {
         let element2 = app.collectionViews.cells.staticTexts["Negotiations"]
         XCTAssertTrue(element2.isHittable)
     }
+    
+    func testClickingOnAPicturesShowsTheComment() {
+        let element = app.collectionViews.cells.staticTexts["Moritzburg Sunset"]
+        element.tap()
+        
+        let element2 = app.tables.cells.staticTexts["blichb"]
+        XCTAssertTrue(element2.isHittable)
+        
+        app.navigationBars.buttons["Sascha Gebhardt"].tap()
+        XCTAssertTrue(element.isHittable)
+    }
 
 
 }

@@ -21,6 +21,7 @@ class CommentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         commentsTableView.dataSource = self
+        commentsTableView.tableFooterView = UIView()
         loadPhoto()
         loadComments()
     }

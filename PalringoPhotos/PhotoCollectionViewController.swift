@@ -36,10 +36,14 @@ class PhotoCollectionViewController: UICollectionViewController, UICollectionVie
         return CGSize(width: collectionView.bounds.width, height: 200)
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let dataSource = collectionView.dataSource as? ImageDataSource
-//        let photo = dataSource?.photos[indexPath.section][indexPath.item]
-//        print("selected photo: \(photo?.name)")
-//    }
-
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let dataSource = collectionView.dataSource as? ImageDataSource
+        
+        if let photo = dataSource?.photos[indexPath.section][indexPath.item], let fetcher = dataSource?.fetcher {
+            let commetsVC = CommentsVCFactory().getCommentsVC(photo: photo, commentsFetcher: fetcher)
+            commetsVC.navigationItem.title = photo.name
+            self.show(commetsVC, sender: self)
+        }
+    }
+    
 }
