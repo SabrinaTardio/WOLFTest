@@ -51,6 +51,16 @@ class CommentsVCTests: XCTestCase {
         
         XCTAssertEqual(actualAuthor, expectedAuthor)
     }
+    
+    func testTableViewShowsCorrectComment() {
+        fetcher.triggerCompletion()
+        let randomIndex = Int.random(in: 0..<3)
+        let expectedComment = comments[randomIndex].comment
+        let tableViewSelectedCell = vc.commentsTableView.cellForRow(at: IndexPath(row: randomIndex, section: 0)) as! CommentCellTableViewCell
+        let actualComment = tableViewSelectedCell.commentLabel.text
+        
+        XCTAssertEqual(actualComment, expectedComment)
+    }
 
 }
 
