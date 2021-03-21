@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="689" y="159"/>
         </scene>
-        <!--View Controller-->
+        <!--Comments View Controller-->
         <scene sceneID="tDi-gy-6Vs">
             <objects>
-                <viewController id="E5r-gG-7GL" sceneMemberID="viewController">
+                <viewController id="E5r-gG-7GL" customClass="CommentsViewController" customModule="PalringoPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EJ5-0F-Tix"/>
                         <viewControllerLayoutGuide type="bottom" id="VDo-xw-Av8"/>
@@ -185,6 +185,10 @@
                             <constraint firstItem="JWA-b8-p5T" firstAttribute="leading" secondItem="6w5-0f-KWU" secondAttribute="leading" id="rR7-bc-vkn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="commentsTableView" destination="IBx-1I-L1W" id="cCf-97-cOX"/>
+                        <outlet property="photoImageView" destination="JWA-b8-p5T" id="BP1-c0-UvP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KG5-4U-bOp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

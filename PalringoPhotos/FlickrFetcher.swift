@@ -69,7 +69,7 @@ fileprivate extension PhotoComment {
     }
 }
 
-class FlickrFetcher {
+class FlickrFetcher: CommentsFetcher {
     let requester: Request
     
     init(requester: Request = CachedRequest()) {
@@ -166,4 +166,10 @@ class FlickrFetcher {
     }
     
     
+}
+
+
+protocol CommentsFetcher {
+    func getPhotoComments(for photo: Photo,
+                       completion: @escaping ([PhotoComment])->())
 }

@@ -37,10 +37,3 @@ class CapturingRequester: Request {
 }
 
 
-extension UIViewController {
-    func displayOnScreen() {
-        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first!
-        window.rootViewController = self
-        XCTWaiter().wait(for: [XCTestExpectation()], timeout: 5)
-    }
-}

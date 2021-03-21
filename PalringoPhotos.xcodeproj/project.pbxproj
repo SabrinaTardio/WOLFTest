@@ -23,6 +23,8 @@
 		2CB9397E2604DBF300E5A850 /* AcceptanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CB9397D2604DBF300E5A850 /* AcceptanceTest.swift */; };
 		2CCF7B682606894E00B5FD87 /* FlickerFetcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCF7B672606894E00B5FD87 /* FlickerFetcherTests.swift */; };
 		2CCF7CEB2606C14600B5FD87 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCF7CEA2606C14600B5FD87 /* TestingAppDelegate.swift */; };
+		2CCF7CF0260750B300B5FD87 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCF7CEF260750B300B5FD87 /* CommentsViewController.swift */; };
+		2CCF7CF82607514F00B5FD87 /* CommentsVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCF7CF72607514F00B5FD87 /* CommentsVCTests.swift */; };
 		B5586B511DB153B800E82C9B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5586B501DB153B800E82C9B /* GradientView.swift */; };
 		B59C06221DB16D3500425848 /* CachedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59C06211DB16D3500425848 /* CachedRequest.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,8 @@
 		2CB9397D2604DBF300E5A850 /* AcceptanceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptanceTest.swift; sourceTree = "<group>"; };
 		2CCF7B672606894E00B5FD87 /* FlickerFetcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickerFetcherTests.swift; sourceTree = "<group>"; };
 		2CCF7CEA2606C14600B5FD87 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
+		2CCF7CEF260750B300B5FD87 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		2CCF7CF72607514F00B5FD87 /* CommentsVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVCTests.swift; sourceTree = "<group>"; };
 		B5586B501DB153B800E82C9B /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		B59C06211DB16D3500425848 /* CachedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedRequest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +138,7 @@
 				07F258201DB3BA8F0077EACA /* PhotoComment.swift */,
 				07F2581E1DB3B66A0077EACA /* PhotoCell.swift */,
 				B5586B501DB153B800E82C9B /* GradientView.swift */,
+				2CCF7CEF260750B300B5FD87 /* CommentsViewController.swift */,
 				075F3ACE1DB0FFE100831312 /* Assets.xcassets */,
 				075F3AD01DB0FFE100831312 /* LaunchScreen.storyboard */,
 				075F3AD31DB0FFE100831312 /* Info.plist */,
@@ -157,6 +162,7 @@
 				075F3ADC1DB0FFE100831312 /* PalringoPhotosTests.m */,
 				075F3ADE1DB0FFE100831312 /* Info.plist */,
 				2CCF7B672606894E00B5FD87 /* FlickerFetcherTests.swift */,
+				2CCF7CF72607514F00B5FD87 /* CommentsVCTests.swift */,
 				2CCF7CEA2606C14600B5FD87 /* TestingAppDelegate.swift */,
 			);
 			path = PalringoPhotosTests;
@@ -310,6 +316,7 @@
 			files = (
 				07F2581D1DB3B5400077EACA /* Photo.swift in Sources */,
 				07F2581F1DB3B66A0077EACA /* PhotoCell.swift in Sources */,
+				2CCF7CF0260750B300B5FD87 /* CommentsViewController.swift in Sources */,
 				07F258211DB3BA8F0077EACA /* PhotoComment.swift in Sources */,
 				075F3AC71DB0FFE100831312 /* AppDelegate.m in Sources */,
 				075F3AF71DB1001D00831312 /* PhotoCollectionViewController.swift in Sources */,
@@ -327,6 +334,7 @@
 			files = (
 				2CCF7CEB2606C14600B5FD87 /* TestingAppDelegate.swift in Sources */,
 				2CCF7B682606894E00B5FD87 /* FlickerFetcherTests.swift in Sources */,
+				2CCF7CF82607514F00B5FD87 /* CommentsVCTests.swift in Sources */,
 				075F3ADD1DB0FFE100831312 /* PalringoPhotosTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
