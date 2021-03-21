@@ -11,15 +11,35 @@ import XCTest
 
 
 class CommentsVCTests: XCTestCase {
+    
+    var fetcher: MockCommentFetcher!
+    var vc: CommentsViewController!
+    let expectedPhoto = Photo(id: "someId", name: "someName", url: URL(string: "https://someurl")!)
+    let comments = [PhotoComment(id: "1", author: "author1", comment: "bella"), PhotoComment(id: "2", author: "author2", comment: "bellissima"), PhotoComment(id: "3", author: "author3", comment: "bellissimissima")]
+    
+    override func setUp() {
+        fetcher = MockCommentFetcher(comments: comments)
+        vc = CommentsVCFactory().getCommentsVC(photo: expectedPhoto, commentsFetcher: fetcher)
+        vc.displayOnScreen()
+    }
+    
+    override func tearDown() {
+        vc = nil
+        fetcher = nil
+    }
 
     func testAskCommentsForCorrectPhotoOnInitialisation() {
-        let fetcher = MockCommentFetcher()
-        let expectedPhoto = Photo(id: "someId", name: "someName", url: URL(string: "https://someurl")!)
-        let vc = CommentsVCFactory().getCommentsVC(photo: expectedPhoto, commentsFetcher: fetcher)
-        vc.displayOnScreen()
         let actualPhoto = fetcher.capturedPhoto
         
         XCTAssertEqual(actualPhoto, expectedPhoto)
+    }
+    
+    func testTableViewHasCorrectNumberOfRows() {
+        fetcher.triggerCompletion()
+        let expectedNumberOfRows = comments.count
+        let actualNumberOfRows = vc.commentsTableView.numberOfRows(inSection: 0)
+        
+        XCTAssertEqual(actualNumberOfRows, expectedNumberOfRows)
     }
 
 }
@@ -34,9 +54,20 @@ extension UIViewController {
 
 class MockCommentFetcher: CommentsFetcher {
     var capturedPhoto: Photo?
+    var comments: [PhotoComment]
+    var completion: (([PhotoComment]) -> ())?
+    
+    init(comments: [PhotoComment] = []) {
+        self.comments = comments
+    }
     
     func getPhotoComments(for photo: Photo, completion: @escaping ([PhotoComment]) -> ()) {
         self.capturedPhoto = photo
+        self.completion = completion
+    }
+    
+    func triggerCompletion() {
+        completion!(comments)
     }
     
     

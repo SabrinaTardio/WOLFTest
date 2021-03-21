@@ -19,22 +19,42 @@ class CommentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        commentFetcher.getPhotoComments(for: photo) { (comments) in
-        }
+        commentsTableView.dataSource = self
+        loadComments()
     }
     
+    private func loadComments() {
+        commentFetcher.getPhotoComments(for: photo) { (comments) in
+            self.comments = comments
+            self.commentsTableView.reloadData()
+        }
+    }
 
- 
+}
 
+extension CommentsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return comments.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath)
+        return cell
+    }
+    
+    
 }
 
 
 
 class CommentsVCFactory {
     func getCommentsVC(photo: Photo, commentsFetcher: CommentsFetcher) -> CommentsViewController {
-        let vc = CommentsViewController()
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle:Bundle(for: type(of: self)))
+        let vc = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as! CommentsViewController
         vc.photo = photo
         vc.commentFetcher = commentsFetcher
         return vc
     }
 }
+
+
