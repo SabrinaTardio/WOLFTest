@@ -34,7 +34,9 @@ class CommentsViewController: UIViewController {
     
     private func loadPhoto() {
         _ = requeter.request(url: photo.url) { (data, _) in
-          
+            guard let data = data else { return }
+            let image = UIImage(data: data)
+            self.photoImageView?.image = image
         }
     }
 

@@ -29,10 +29,22 @@ class FlickerFetcherTests: XCTestCase {
 
 class CapturingRequester: Request {
     var capturedURL: String = ""
+    var completion: ((Data?, Bool) -> ())?
+    var image: UIImage
+    
+    init(image: UIImage = UIImage()) {
+        self.image = image
+    }
     
     func request(url: URL, completion: @escaping (Data?, Bool) -> ()) -> URLSessionTask? {
         capturedURL = url.absoluteString
+        self.completion = completion
         return nil
+    }
+    
+    func triggerCompletion() {
+        let data = image.pngData()
+        completion!(data, true)
     }
 }
 
