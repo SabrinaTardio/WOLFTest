@@ -15,11 +15,13 @@ class CommentsViewController: UIViewController {
     
     var photo: Photo!
     var commentFetcher: CommentsFetcher!
+    var requeter: Request!
     var comments: [PhotoComment] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         commentsTableView.dataSource = self
+        loadPhoto()
         loadComments()
     }
     
@@ -27,6 +29,12 @@ class CommentsViewController: UIViewController {
         commentFetcher.getPhotoComments(for: photo) { (comments) in
             self.comments = comments
             self.commentsTableView.reloadData()
+        }
+    }
+    
+    private func loadPhoto() {
+        _ = requeter.request(url: photo.url) { (data, _) in
+          
         }
     }
 
@@ -50,11 +58,12 @@ extension CommentsViewController: UITableViewDataSource {
 
 
 class CommentsVCFactory {
-    func getCommentsVC(photo: Photo, commentsFetcher: CommentsFetcher) -> CommentsViewController {
+    func getCommentsVC(photo: Photo, commentsFetcher: CommentsFetcher, requester: Request = CachedRequest()) -> CommentsViewController {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle:Bundle(for: type(of: self)))
         let vc = storyboard.instantiateViewController(withIdentifier: "CommentsVC") as! CommentsViewController
         vc.photo = photo
         vc.commentFetcher = commentsFetcher
+        vc.requeter = requester
         return vc
     }
 }

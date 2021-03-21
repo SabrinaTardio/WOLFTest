@@ -13,13 +13,17 @@ import XCTest
 class CommentsVCTests: XCTestCase {
     
     var fetcher: MockCommentFetcher!
+    var requester: CapturingRequester!
     var vc: CommentsViewController!
-    let expectedPhoto = Photo(id: "someId", name: "someName", url: URL(string: "https://someurl")!)
+    let expectedPhotoURL = "https://someurl"
+    var expectedPhoto: Photo!
     let comments = [PhotoComment(id: "1", author: "author1", comment: "bella"), PhotoComment(id: "2", author: "author2", comment: "bellissima"), PhotoComment(id: "3", author: "author3", comment: "bellissimissima")]
     
     override func setUp() {
+        expectedPhoto = Photo(id: "someId", name: "someName", url: URL(string: expectedPhotoURL)!)
+        requester = CapturingRequester()
         fetcher = MockCommentFetcher(comments: comments)
-        vc = CommentsVCFactory().getCommentsVC(photo: expectedPhoto, commentsFetcher: fetcher)
+        vc = CommentsVCFactory().getCommentsVC(photo: expectedPhoto, commentsFetcher: fetcher, requester: requester)
         vc.displayOnScreen()
     }
     
@@ -60,6 +64,12 @@ class CommentsVCTests: XCTestCase {
         let actualComment = tableViewSelectedCell.commentLabel.text
         
         XCTAssertEqual(actualComment, expectedComment)
+    }
+    
+    func testAskImageForCorrectURL() {
+        let actualURL = requester.capturedURL
+        
+        XCTAssertEqual(actualURL, expectedPhotoURL)
     }
 
 }
