@@ -28,8 +28,10 @@ class CommentsViewController: UIViewController {
     
     private func loadComments() {
         commentFetcher.getPhotoComments(for: photo) { (comments) in
-            self.comments = comments
-            self.commentsTableView.reloadData()
+            DispatchQueue.main.async {
+                self.comments = comments
+                self.commentsTableView.reloadData()
+            }
         }
     }
     
@@ -37,7 +39,9 @@ class CommentsViewController: UIViewController {
         _ = requeter.request(url: photo.url) { (data, _) in
             guard let data = data else { return }
             let image = UIImage(data: data)
-            self.photoImageView?.image = image
+            DispatchQueue.main.async {
+                self.photoImageView?.image = image
+            }
         }
     }
 
@@ -51,8 +55,23 @@ extension CommentsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentCellTableViewCell
         cell.authorLabel.text = comments[indexPath.row].author
-        cell.commentLabel.text = comments[indexPath.row].comment
+        let comment = comments[indexPath.row].comment
+        
+        if comment.contains("<") {
+            let attributedText = decode(htmlString: comment)
+            cell.commentLabel.text =  attributedText?.string
+        } else {
+            cell.commentLabel.text = comment
+        }
         return cell
+    }
+    
+    private func decode(htmlString: String) -> NSAttributedString? {
+        let data = Data(htmlString.utf8)
+        if let attributedString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil) {
+            return attributedString
+        }
+        return nil
     }
     
     
