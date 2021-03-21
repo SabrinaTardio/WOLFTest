@@ -1,5 +1,6 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
-{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 Menlo-Regular;}
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue-Bold;\f1\fnil\fcharset0 HelveticaNeue;\f2\fnil\fcharset0 Menlo-Regular;
+}
 {\colortbl;\red255\green255\blue255;\red255\green128\blue0;\red0\green128\blue255;\red102\green102\blue102;
 }
 {\*\expandedcolortbl;;\csgenericrgb\c100000\c50196\c0;\csgenericrgb\c0\c50196\c100000;\csgenericrgb\c40000\c40000\c40000;
@@ -8,10 +9,42 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
 
 \f0\b\fs48 \cf0 Palringo Technical Task
-\b0\fs34 \
+\f1\b0\fs34 \
+\
+APPROACH\
 \
 
-\fs28 This is a simple Flicker photo viewer. \
+\f0\b Bug:\
+
+\f1\b0 First I solved the Bug and wrote an acceptance test to cover the existing feature: Scrolling through pictures of a photographer.\
+\
+
+\f0\b Feature 1:\
+
+\f1\b0 I made the CachedRequest methods non static and I made the class conform to a protocol to be able to inject an instance of that type in the FlickrFetcher so I was able to test the new API of requesting photos for a selected author.\
+I then implemented the UI side of it and covered it with an acceptance test.\
+\
+
+\f0\b Feature 2:\
+
+\f1\b0 I made a new View controller and built it using TDD. \
+I created a table view with the comments below an image view with the picture selected. Then I connected this view controller to the previous screen when clicking on a collection view picture and covered this with an acceptance test.\
+Finally I started to work on the HTML decoder, at the moment it is only showing the decoded string. This is not tested.\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\b \cf0 Feature 3:
+\f1\b0 \
+I did not have time to work on Feature 3 since I have been busy during the weekend. Can continue later if necessary. \
+\
+\
+After finishing the requested work I would then refactor the codebase which can be simplified (CachedRequest class or the Photo cell) and some external libraries can be used It would be good to have a Coordinator which can inject instances of the needed classes. At the moment what class creates what object is a bit confused and unclear, a more clear architecture should be defined to make it testable. \
+-----------\
+\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\fs28 \cf0 This is a simple Flicker photo viewer. \
 It displays a list of photo from the Flicker REST api. \
 There are several out standing tickets that need to be completed before the app can begin testing.\
 
@@ -22,84 +55,86 @@ The issues are in priority order.\
 \
 \
 
-\b\fs36 \cf2 Bug
+\f0\b\fs36 \cf2 Bug
 \fs28 \
 Current Behaviour
-\b0 \
+\f1\b0 \
 The app becomes unresponsive when trying to load new content.\
 \
 
-\b Steps to reproduce
-\b0 \
+\f0\b Steps to reproduce
+\f1\b0 \
 On a fresh install attempt to scroll down the list\
 The UI locks up and sometimes remains unresponsive\
 \
 
-\b Expected Behaviour
-\b0 \
+\f0\b Expected Behaviour
+\f1\b0 \
 The app should remain responsive when scrolling the photos\cf0 \
 \
 \
 \
 
-\b\fs36 \cf3 Feature 1
-\b0\fs28 \
+\f0\b\fs36 \cf3 Feature 1
+\f1\b0\fs28 \
 Users would like to see photos by other photographers\
 \
 
-\b Expected Behaviour
-\b0 \
+\f0\b Expected Behaviour
+\f1\b0 \
 The user should be able to choose a photographer from some kind of list. The main screen should then be populated by their chosen photographer. The title at the top of the screen should reflect the chosen photographer.\
 \
 
-\b Developer Notes 
-\b0 \
+\f0\b Developer Notes 
+\f1\b0 \
 The list of pre-approved photographers in a enum in the 
-\f1 FlickrFetcher
-\f0  file.\
+\f2 FlickrFetcher
+\f1  file.\
 \
 \
 \
 
-\b\fs36 Feature 2
-\b0\fs28 \
+\f0\b\fs36 Feature 2
+\f1\b0\fs28 \
 Users would like to see the comments for each photo.\
 \
 
-\b Expected Behaviour
-\b0 \
+\f0\b Expected Behaviour
+\f1\b0 \
 A details view controller should be presented when a user taps a photo in the photo list. The detail controller should show the full photo, un-cropped, with the relevant comments and the name of the user who has commented. Layout is up to the developer. \
 \
 
-\b Developer Notes 
-\b0 \
+\f0\b Developer Notes 
+\f1\b0 \
 A method has been added to the 
-\f1 FlickrFetcher
-\f0  to get the comments. \
+\f2 FlickrFetcher
+\f1  to get the comments. \
 Some comments use HTML\
 \
 \cf0 \
 \
 
-\b\fs36 \cf3 Feature 3
-\b0\fs28 \
+\f0\b\fs36 \cf3 Feature 3
+\f1\b0\fs28 \
 Users would like to see the profile picture of the selected photographer.\
 \
 
-\b Expected Behaviour
-\b0 \
+\f0\b Expected Behaviour
+\f1\b0 \
 The photographers profile picture should be shown on the main screen. It should be placed in the navigation bar on the leading side. \
 \
 
-\b Developer Notes 
-\b0 \
+\f0\b Developer Notes 
+\f1\b0 \
 The 
-\f1 Photographer 
-\f0 enum has the profile picture urls\cf0 \
+\f2 Photographer 
+\f1 enum has the profile picture urls\cf0 \
 \
 \
 \
 
-\b\fs36 \cf4 On going improvements
-\b0\fs28 \
-Feel free to refactor anything you see fit.}
+\f0\b\fs36 \cf4 On going improvements
+\f1\b0\fs28 \
+Feel free to refactor anything you see fit.\
+\
+}
